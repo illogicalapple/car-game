@@ -84,7 +84,7 @@ addEventListener("load", function() {
 			let playerWidth = car.width;
 			let playerHeight = car.height;
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
-				boom(element.x, element.y);
+				boom(x, y);
 				console.log("Boom");
 				element.element.remove();
 				cars.splice(index, 1);
