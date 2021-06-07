@@ -1,0 +1,19 @@
+div#game {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+}
+body {
+	margin: 0px;
+}
+div#game * {
+	--x: 0px;
+	--y: 0px;
+	position: absolute;
+	top: calc(50% - var(--y));
+	left: calc(50% + var(--x));
+	transform: translate(-50%, -50%);
+}
