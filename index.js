@@ -51,8 +51,8 @@ function boom(x, y) {
 	let index = explosions.length;
 	let explosion = image("images/boom.svg", null, 0);
 	select("div#game").appendChild(explosion);
-	explosion.style.setProperty("--x", x);
-	explosion.style.setProperty("--y", y);
+	explosion.style.setProperty("--x", String(x) + "px");
+	explosion.style.setProperty("--y", String(y) + "px");
 	explosions.push({
 		stage: 0,
 		element: explosion,
