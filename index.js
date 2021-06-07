@@ -50,7 +50,7 @@ function frame(stuff, useControls, element) {
 function boom(x, y) {
 	let index = explosions.length;
 	let explosion = image("images/boom.svg", null, 0);
-	container.appendChild(explosion);
+	select("div#game").appendChild(explosion);
 	explosion.style.setProperty("--x", x);
 	explosion.element.style.setProperty("--y", y);
 	explosions.push({
