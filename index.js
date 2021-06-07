@@ -54,7 +54,7 @@ document.addEventListener("keyup", function(event) {
 });
 addEventListener("load", function() {
 	let container = select("div#game");
-	let car = image("car.svg", null, 50);
+	let car = image("images/car.svg", null, 50);
 	container.appendChild(car);
 	setInterval(function() {
 		camera.x += (stuff.coordinates.x - camera.x) / 10;
@@ -78,7 +78,7 @@ addEventListener("load", function() {
 		});
 	}, 33);
 	setInterval(function spawnCar() {
-		let car = image("othercar.svg", null, 50);
+		let car = image("images/othercar.svg", null, 50);
 		car.hidden = true;
 		let x = Math.floor(Math.random() * innerWidth) + stuff.coordinates.x;
 		let y = Math.floor(Math.random() * innerHeight) + stuff.coordinates.y;
