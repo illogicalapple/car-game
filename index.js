@@ -14,8 +14,9 @@ var stuff = {
 		y: 0
 	},
 	direction: 90
-}
+};
 var cars = [];
+var explosions = [];
 function image(source, width, height) {
 	let image = new Image();
 	image.src = source;
@@ -46,6 +47,18 @@ function frame(stuff, useControls, element) {
 	element.style.setProperty("--y", String(Math.ceil(stuff.coordinates.y - camera.y)) + "px");
 	element.style.setProperty("transform", "translate(-50%, -50%) rotate(" + String(stuff.direction - 90) + "deg)");
 }
+function boom(x, y) {
+	let index = explosions.length;
+	let explosion = image("images/boom.svg", null, 0);
+	container.appendChild(explosion);
+	explosion.style.setProperty("--x", x);
+	explosion.element.style.setProperty("--y", y);
+	explosions.push({
+		stage: 0,
+		element: explosion,
+		index: index
+	});
+}
 document.addEventListener("keydown", function(event) {
 	if(!keys.includes(event.key.toLowerCase())) keys.push(event.key.toLowerCase());
 });
@@ -71,9 +84,19 @@ addEventListener("load", function() {
 			let playerWidth = car.width;
 			let playerHeight = car.height;
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
+				boom(element.x, element.y);
 				console.log("Boom");
 				element.element.remove();
 				cars.splice(index, 1);
+			}
+		});
+		explosions.forEach(element => {
+			element.element.height = Math.min(element.stage, 50);
+			element.element.style.opacity = String(element.stage > 50 ? 1 - ((element.stage - 50) / 50) : 1);
+			element.stage += element.stage < 50 ? 20 : 10;
+			if(element.stage >= 100) {
+				element.element.remove();
+				explosions.splice(element.index, 1);
 			}
 		});
 	}, 33);
