@@ -52,7 +52,7 @@ function boom(x, y) {
 	let explosion = image("images/boom.svg", null, 0);
 	select("div#game").appendChild(explosion);
 	explosion.style.setProperty("--x", x);
-	explosion.element.style.setProperty("--y", y);
+	explosion.style.setProperty("--y", y);
 	explosions.push({
 		stage: 0,
 		element: explosion,
