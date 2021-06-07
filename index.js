@@ -91,7 +91,7 @@ addEventListener("load", function() {
 			}
 		});
 		explosions.forEach(element => {
-			element.element.style.height = Math.min(element.stage, 50);
+			element.element.style.height = String(Math.min(element.stage, 50)) + "px";
 			element.element.style.opacity = String(element.stage > 50 ? 1 - ((element.stage - 50) / 50) : 1);
 			element.stage += element.stage < 50 ? 20 : 10;
 			if(element.stage >= 100) {
