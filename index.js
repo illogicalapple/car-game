@@ -50,6 +50,7 @@ function frame(stuff, useControls, element) {
 function boom(x, y) {
 	let index = explosions.length;
 	let explosion = image("images/boom.svg", null, 0);
+	let sound = new Audio("sounds/boom.mp3");
 	select("div#game").appendChild(explosion);
 	explosion.style.setProperty("--x", String(x) + "px");
 	explosion.style.setProperty("--y", String(y) + "px");
@@ -57,6 +58,9 @@ function boom(x, y) {
 		stage: 0,
 		element: explosion,
 		index: index
+	});
+	sound.addEventListener("canplaythrough", function(event) {
+		this.play();
 	});
 }
 document.addEventListener("keydown", function(event) {
