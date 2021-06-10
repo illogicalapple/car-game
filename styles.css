@@ -8,6 +8,7 @@ div#game {
 }
 body {
 	margin: 0px;
+	background-color: darkgray;
 }
 div#game * {
 	--x: 0px;
