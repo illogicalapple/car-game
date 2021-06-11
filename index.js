@@ -79,6 +79,13 @@ addEventListener("load", function() {
 	oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10) + 5, audioContext.currentTime);
 	oscillator.connect(gainNode);
 	oscillator.start();
+	if(audioContext.state === "suspended") {
+		select("div.suspended").hidden = false;
+		document.addEventListener("click", function() {
+			select("div.suspended").hidden = true;
+			audioContext.resume();
+		});
+	}
 	let container = select("div#game");
 	let car = image("images/car.svg", null, 50);
 	container.appendChild(car);
