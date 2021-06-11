@@ -70,6 +70,15 @@ document.addEventListener("keyup", function(event) {
 	if(keys.includes(event.key.toLowerCase())) keys.splice(keys.indexOf(event.key.toLowerCase()), 1);
 });
 addEventListener("load", function() {
+	let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+	let oscillator = audioContext.createOscillator();
+	var gainNode = audioContext.createGain();
+	gainNode.gain.value = 0.2;
+	gainNode.connect(audioContext.destination);
+	oscillator.type = "square";
+	oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10) + 5, audioContext.currentTime);
+	oscillator.connect(gainNode);
+	oscillator.start();
 	let container = select("div#game");
 	let car = image("images/car.svg", null, 50);
 	container.appendChild(car);
@@ -103,6 +112,7 @@ addEventListener("load", function() {
 				explosions.splice(element.index, 1);
 			}
 		});
+		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10) + 5, audioContext.currentTime);
 	}, 33);
 	setInterval(function spawnCar() {
 		let car = image("images/othercar.svg", null, 50);
