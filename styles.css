@@ -18,3 +18,13 @@ div#game * {
 	left: calc(50% + var(--x));
 	transform: translate(-50%, -50%);
 }
+div.suspended {
+	color: white;
+	position: absolute;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	padding: 40px;
+	box-sizing: border-box;
+	width: 100vw;
+}
