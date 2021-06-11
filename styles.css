@@ -9,6 +9,7 @@ div#game {
 body {
 	margin: 0px;
 	background-color: #81c56a;
+	font-family: Lato, sans-serif;
 }
 div#game * {
 	--x: 0px;
