@@ -1,0 +1,28 @@
+<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="15" y="90" width="170" height="150" rx="10" fill="#FFCD92"/>
+<path d="M75 185C75 182.239 77.2386 180 80 180H120C122.761 180 125 182.239 125 185V240H75V185Z" fill="#C7966A"/>
+<circle cx="110" cy="206" r="5" fill="black" fill-opacity="0.5"/>
+<rect x="115" y="125" width="35" height="35" rx="5" fill="black" fill-opacity="0.3"/>
+<rect x="130" y="125" width="5" height="35" fill="white"/>
+<rect x="115" y="145" width="5" height="35" transform="rotate(-90 115 145)" fill="white"/>
+<rect x="50" y="125" width="35" height="35" rx="5" fill="black" fill-opacity="0.3"/>
+<rect x="65" y="125" width="5" height="35" fill="white"/>
+<rect x="50" y="145" width="5" height="35" transform="rotate(-90 50 145)" fill="white"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="100">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M130.241 0C127.479 0 125.241 2.23858 125.241 5V23.4306L103.402 3.15774C101.483 1.37706 98.5165 1.37707 96.5982 3.15775L1.60837 91.3355C-1.72243 94.4275 0.465364 100 5.01007 100H194.99C199.534 100 201.722 94.4274 198.391 91.3355L163.096 58.5714H163.102V5C163.102 2.23858 160.864 0 158.102 0H130.241Z" fill="#FF6F6F"/>
+</mask>
+<g mask="url(#mask0)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M130.241 0C127.479 0 125.241 2.23858 125.241 5V23.4306L103.402 3.15774C101.483 1.37706 98.5165 1.37707 96.5982 3.15775L1.60837 91.3355C-1.72243 94.4275 0.465364 100 5.01007 100H194.99C199.535 100 201.722 94.4274 198.391 91.3355L163.096 58.5714H163.102V5C163.102 2.23858 160.864 0 158.102 0H130.241Z" fill="#FF6F6F"/>
+<path d="M0 90C0 87.2386 2.23858 85 5 85H25C27.7614 85 30 87.2386 30 90V100H0V90Z" fill="black" fill-opacity="0.25"/>
+<path d="M60 90C60 87.2386 62.2386 85 65 85H85C87.7614 85 90 87.2386 90 90V100H60V90Z" fill="black" fill-opacity="0.25"/>
+<path d="M120 90C120 87.2386 122.239 85 125 85H145C147.761 85 150 87.2386 150 90V100H120V90Z" fill="black" fill-opacity="0.25"/>
+<path d="M180 90C180 87.2386 182.239 85 185 85H205C207.761 85 210 87.2386 210 90V100H180V90Z" fill="black" fill-opacity="0.25"/>
+<rect x="30" y="55" width="30" height="15" rx="5" fill="black" fill-opacity="0.25"/>
+<rect x="90" y="55" width="30" height="15" rx="5" fill="black" fill-opacity="0.25"/>
+<rect x="150" y="55" width="30" height="15" rx="5" fill="black" fill-opacity="0.25"/>
+<rect x="60" y="25" width="30" height="15" rx="5" fill="black" fill-opacity="0.25"/>
+<rect x="120" y="25" width="30" height="15" rx="5" fill="black" fill-opacity="0.25"/>
+<path d="M90 -5H120V5C120 7.76142 117.761 10 115 10H95C92.2386 10 90 7.76142 90 5V-5Z" fill="black" fill-opacity="0.25"/>
+<path d="M150 -5H180V5C180 7.76142 177.761 10 175 10H155C152.239 10 150 7.76142 150 5V-5Z" fill="black" fill-opacity="0.25"/>
+</g>
+</svg>
