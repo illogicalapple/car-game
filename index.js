@@ -97,7 +97,7 @@ addEventListener("load", function() {
 		frame(stuff, true, car);
 		let playerX = Number(car.style.getPropertyValue("--x").slice(0, -2));
 		let playerY = Number(car.style.getPropertyValue("--y").slice(0, -2));
-		cars.filter(element => {
+		cars.forEach(element => {
 			frame(element, false, element.element);
 			let x = Number(element.element.style.getPropertyValue("--x").slice(0, -2));
 			let y = Number(element.element.style.getPropertyValue("--y").slice(0, -2));
@@ -108,19 +108,17 @@ addEventListener("load", function() {
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
 				boom(x, y, "car");
 				element.element.remove();
-				return false;
+				cars.splice(element.index);
 			}
-			return true;
 		});
-		explosions.filter(element => {
+		explosions.forEach(element => {
 			element.element.style.height = String(Math.min(element.stage, 50)) + "px";
 			element.element.style.opacity = String(element.stage > 50 ? 1 - ((element.stage - 50) / 50) : 1);
 			element.stage += element.stage < 50 ? 10 : 5;
 			if(element.stage >= 100) {
 				element.element.remove();
-				return false;
+				explosions.splice(element.index, 1);
 			}
-			return true;
 		});
 		if(Math.round(Math.abs(stuff.velocity.forward)) > 0) {
 			document.querySelectorAll("div#game img.house").forEach(element => element.remove());
@@ -149,7 +147,8 @@ addEventListener("load", function() {
 				forward: 0,
 				turn: 0
 			},
-			element: car
+			element: car,
+			index: cars.length
 		});
 	}, 2000);
 });
