@@ -134,7 +134,7 @@ addEventListener("load", function() {
 		car.hidden = true;
 		let x = Math.floor(Math.random() * innerWidth) + stuff.coordinates.x;
 		let y = Math.floor(Math.random() * innerHeight) + stuff.coordinates.y;
-		let index = cars.index;
+		let index = cars.length;
 		x -= (x / 2) + 1
 		y -= (y / 2) + 1
 		container.appendChild(car);
