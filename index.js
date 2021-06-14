@@ -108,7 +108,7 @@ addEventListener("load", function() {
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
 				boom(x, y, "car");
 				element.element.remove();
-				cars.splice(element.index);
+				cars.splice(element.index, 1);
 			}
 		});
 		explosions.forEach(element => {
