@@ -108,7 +108,9 @@ addEventListener("load", function() {
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
 				boom(x, y, "car");
 				element.element.remove();
-				cars.splice(element.index, 1);
+				var index = element.index;
+				cars.splice(index, 1);
+				cars.forEach(element => if(element.index > index) element.index--);
 			}
 		});
 		explosions.forEach(element => {
@@ -117,7 +119,9 @@ addEventListener("load", function() {
 			element.stage += element.stage < 50 ? 10 : 5;
 			if(element.stage >= 100) {
 				element.element.remove();
-				explosions.splice(element.index, 1);
+				let index = element.index;
+				explosions.splice(index, 1);
+				explosions.forEach(element => if(element.index > index) element.index--);
 			}
 		});
 		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
