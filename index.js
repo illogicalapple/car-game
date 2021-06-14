@@ -35,7 +35,7 @@ function frame(stuff, useControls, element) {
 		stuff.velocity.forward += Math.sign(Math.random() - 0.5) / 2;
 		if(Math.floor(Math.random() * 400) === 0) {
 			element.remove();
-			cars.splice(cars.indexOf(stuff), 1);
+			cars.splice(stuff.index, 1);
 			return;
 		}
 	}
