@@ -110,7 +110,11 @@ addEventListener("load", function() {
 				element.element.remove();
 				var index = element.index;
 				cars.splice(index, 1);
-				cars.forEach(element => if(element.index > index) element.index--);
+				cars.forEach(element => {
+					if(element.index > index) {
+						element.index--;
+					}
+				});
 			}
 		});
 		explosions.forEach(element => {
@@ -121,7 +125,11 @@ addEventListener("load", function() {
 				element.element.remove();
 				let index = element.index;
 				explosions.splice(index, 1);
-				explosions.forEach(element => if(element.index > index) element.index--);
+				explosions.forEach(element => {
+					if(element.index > index) {
+						element.index--;
+					}
+				});
 			}
 		});
 		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
