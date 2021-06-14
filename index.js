@@ -135,28 +135,28 @@ addEventListener("load", function() {
 		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
 		document.body.style.backgroundPositionX = "calc(50% - " + String(camera.x) + "px)";
 		document.body.style.backgroundPositionY = "calc(50% + " + String(camera.y) + "px)";
+		if((Math.random() * 60) < 1)) {
+			let car = image("images/othercar.svg", null, 50);
+			car.hidden = true;
+			let x = Math.floor(Math.random() * innerWidth) + stuff.coordinates.x;
+			let y = Math.floor(Math.random() * innerHeight) + stuff.coordinates.y;
+			let index = cars.length;
+			x -= (x / 2) + 1
+			y -= (y / 2) + 1
+			container.appendChild(car);
+			cars.push({
+				coordinates: {
+					x: x,
+					y: y
+				},
+				direction: Math.floor(Math.random() * 360),
+				velocity: {
+					forward: 0,
+					turn: 0
+				},
+				element: car,
+				index: index
+			});
+		}
 	}, 33);
-	setInterval(function spawnCar() {
-		let car = image("images/othercar.svg", null, 50);
-		car.hidden = true;
-		let x = Math.floor(Math.random() * innerWidth) + stuff.coordinates.x;
-		let y = Math.floor(Math.random() * innerHeight) + stuff.coordinates.y;
-		let index = cars.length;
-		x -= (x / 2) + 1
-		y -= (y / 2) + 1
-		container.appendChild(car);
-		cars.push({
-			coordinates: {
-				x: x,
-				y: y
-			},
-			direction: Math.floor(Math.random() * 360),
-			velocity: {
-				forward: 0,
-				turn: 0
-			},
-			element: car,
-			index: index
-		});
-	}, 2000);
 });
