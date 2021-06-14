@@ -17,6 +17,7 @@ var stuff = {
 };
 var cars = [];
 var explosions = [];
+var explodedHouses = [];
 function image(source, width, height) {
 	let image = new Image();
 	image.src = source;
@@ -47,7 +48,7 @@ function frame(stuff, useControls, element) {
 	element.style.setProperty("--y", String(Math.ceil(stuff.coordinates.y - camera.y)) + "px");
 	element.style.setProperty("transform", "translate(-50%, -50%) rotate(" + String(stuff.direction - 90) + "deg)");
 }
-function boom(x, y) {
+function boom(x, y, type) {
 	let index = explosions.length;
 	let explosion = image("images/boom.svg", null, 0);
 	let sound = new Audio("sounds/boom.mp3");
@@ -57,6 +58,7 @@ function boom(x, y) {
 	explosions.push({
 		stage: 0,
 		element: explosion,
+		type: type,
 		index: index
 	});
 	sound.addEventListener("canplaythrough", function(event) {
@@ -76,7 +78,7 @@ addEventListener("load", function() {
 	gainNode.gain.value = 0.2;
 	gainNode.connect(audioContext.destination);
 	oscillator.type = "square";
-	oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10) + 5, audioContext.currentTime);
+	oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
 	oscillator.connect(gainNode);
 	oscillator.start();
 	if(audioContext.state === "suspended") {
@@ -93,33 +95,41 @@ addEventListener("load", function() {
 		camera.x += (stuff.coordinates.x - camera.x) / 10;
 		camera.y += (stuff.coordinates.y - camera.y) / 10;
 		frame(stuff, true, car);
-		cars.forEach((element, index) => {
+		let playerX = Number(car.style.getPropertyValue("--x").slice(0, -2));
+		let playerY = Number(car.style.getPropertyValue("--y").slice(0, -2));
+		cars.filter(element => {
 			frame(element, false, element.element);
 			let x = Number(element.element.style.getPropertyValue("--x").slice(0, -2));
 			let y = Number(element.element.style.getPropertyValue("--y").slice(0, -2));
 			let width = element.element.width;
 			let height = element.element.height;
-			let playerX = Number(car.style.getPropertyValue("--x").slice(0, -2));
-			let playerY = Number(car.style.getPropertyValue("--y").slice(0, -2));
 			let playerWidth = car.width;
 			let playerHeight = car.height;
 			if(x < playerX + playerWidth && x + width > playerX && y < playerY + playerHeight && y + height > playerY) {
-				boom(x, y);
-				console.log("Boom");
+				boom(x, y, "car");
 				element.element.remove();
-				cars.splice(index, 1);
+				return false;
 			}
+			return true;
 		});
-		explosions.forEach(element => {
+		explosions.filter(element => {
 			element.element.style.height = String(Math.min(element.stage, 50)) + "px";
 			element.element.style.opacity = String(element.stage > 50 ? 1 - ((element.stage - 50) / 50) : 1);
 			element.stage += element.stage < 50 ? 10 : 5;
 			if(element.stage >= 100) {
 				element.element.remove();
-				explosions.splice(element.index, 1);
+				return false;
 			}
+			return true;
 		});
-		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10) + 5, audioContext.currentTime);
+		if(Math.round(Math.abs(stuff.velocity.forward)) > 0) {
+			document.querySelectorAll("div#game img.house").forEach(element => element.remove());
+			//empty part in the road is 276x276, width of vertical road is 123.08, height 400
+			
+		}
+		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
+		document.body.style.backgroundPositionX = "calc(50% - " + String(camera.x) + "px)";
+		document.body.style.backgroundPositionY = "calc(50% + " + String(camera.y) + "px)";
 	}, 33);
 	setInterval(function spawnCar() {
 		let car = image("images/othercar.svg", null, 50);
@@ -141,5 +151,5 @@ addEventListener("load", function() {
 			},
 			element: car
 		});
-	}, 2000)
+	}, 2000);
 });
