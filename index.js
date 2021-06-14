@@ -120,11 +120,6 @@ addEventListener("load", function() {
 				explosions.splice(element.index, 1);
 			}
 		});
-		if(Math.round(Math.abs(stuff.velocity.forward)) > 0) {
-			document.querySelectorAll("div#game img.house").forEach(element => element.remove());
-			//empty part in the road is 276x276, width of vertical road is 123.08, height 400
-			
-		}
 		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
 		document.body.style.backgroundPositionX = "calc(50% - " + String(camera.x) + "px)";
 		document.body.style.backgroundPositionY = "calc(50% + " + String(camera.y) + "px)";
