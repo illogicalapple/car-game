@@ -135,7 +135,7 @@ addEventListener("load", function() {
 		oscillator.frequency.setValueAtTime((stuff.velocity.forward * 10.7) + 5, audioContext.currentTime);
 		document.body.style.backgroundPositionX = "calc(50% - " + String(camera.x) + "px)";
 		document.body.style.backgroundPositionY = "calc(50% + " + String(camera.y) + "px)";
-		if((Math.random() * 60) < 1)) {
+		if((Math.random() * 60) < 1) {
 			let car = image("images/othercar.svg", null, 50);
 			car.hidden = true;
 			let x = Math.floor(Math.random() * innerWidth) + stuff.coordinates.x;
