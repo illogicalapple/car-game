@@ -35,7 +35,13 @@ function frame(stuff, useControls, element) {
 		stuff.velocity.forward += Math.sign(Math.random() - 0.5) / 2;
 		if(Math.floor(Math.random() * 400) === 0) {
 			element.remove();
-			cars.splice(stuff.index, 1);
+			let index = stuff.index;
+			cars.splice(index, 1);
+			cars.forEach(element => {
+				if(element.index > index) {
+					element.index--;
+				}
+			});
 			return;
 		}
 	}
